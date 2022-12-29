@@ -1,4 +1,3 @@
-
 const input = document.getElementById("newTask");
 const addBtn = document.getElementById("addItem");
 addBtn.addEventListener("click", function () {
@@ -6,6 +5,18 @@ addBtn.addEventListener("click", function () {
 });
 
 const sort = document.getElementById("two");
+sort.addEventListener('click',function () {
+  sortListAZ("todo");
+  sortListAZ("completed");
+})
+
+const sort_ZA = document.getElementById("three");
+sort_ZA.addEventListener('click',function () {
+  sortListZA("todo");
+  sortListZA("completed");
+})
+
+
 
 function addList() {
   const Todo = document.getElementById("todo");
@@ -46,4 +57,22 @@ function addList() {
     parent.remove();
 
   });
+
 }
+
+function sortListAZ(ul) {
+  var ul = document.getElementById(ul);
+
+  Array.from(ul.getElementsByTagName("LI"))
+    .sort((a, b) => a.textContent.localeCompare(b.textContent))
+    .forEach(li => ul.appendChild(li));
+}
+
+function sortListZA(ul) {
+  var ul = document.getElementById(ul);
+
+  Array.from(ul.getElementsByTagName("LI"))
+    .sort((a,b) => b.textContent.localeCompare(a.textContent))
+    .forEach(li => ul.appendChild(li));
+}
+
